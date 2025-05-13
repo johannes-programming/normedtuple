@@ -1,4 +1,0 @@
-from normedtuple import main
-
-if __name__ == "__main__":
-    main()

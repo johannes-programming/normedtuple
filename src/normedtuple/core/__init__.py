@@ -17,7 +17,8 @@ def normedtuple(norm: Callable) -> type:
             return obj
 
     Ans.__doc__ = norm.__doc__
-    Ans.__name__ = norm.__name__
     Ans.__module__ = norm.__module__
+    Ans.__name__ = norm.__name__
     Ans.__new__.__signature__ = inspect.signature(norm)
+    Ans.__qualname__ = norm.__qualname__
     return Ans

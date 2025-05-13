@@ -1,5 +1,6 @@
 import unittest
 from inspect import signature
+from typing import Self
 
 from normedtuple.core import normedtuple
 
@@ -33,9 +34,16 @@ class TestNormedTuple(unittest.TestCase):
         expected_public_sig = signature(example_norm).replace(
             parameters=list(signature(example_norm).parameters.values())[1:]
         )
-        self.assertEqual(signature(ExampleTuple), expected_public_sig)
+        self.assertEqual(
+            signature(ExampleTuple).parameters, expected_public_sig.parameters
+        )
+        self.assertEqual(signature(ExampleTuple).return_annotation, Self)
         # Signature on __new__ (should match exactly, including 'cls')
-        self.assertEqual(signature(ExampleTuple.__new__), signature(example_norm))
+        self.assertEqual(
+            signature(ExampleTuple.__new__).parameters,
+            signature(example_norm).parameters,
+        )
+        self.assertEqual(signature(ExampleTuple.__new__).return_annotation, Self)
 
 
 if __name__ == "__main__":

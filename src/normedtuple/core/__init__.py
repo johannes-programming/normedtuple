@@ -19,6 +19,9 @@ def normedtuple(norm: Callable) -> type:
     Ans.__doc__ = norm.__doc__
     Ans.__module__ = norm.__module__
     Ans.__name__ = norm.__name__
-    Ans.__new__.__signature__ = inspect.signature(norm)
+    oldsig = inspect.signature(norm)
+    params = oldsig.parameters.values()
+    newsig = inspect.Signature(parameters=params, return_annotation=Self)
+    Ans.__new__.__signature__ = newsig
     Ans.__qualname__ = norm.__qualname__
     return Ans

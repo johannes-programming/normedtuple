@@ -4,9 +4,13 @@ from typing import *
 __all__ = ["normedtuple"]
 
 
-def normedtuple(norm: Callable):
+def normedtuple(norm: Callable) -> type:
+    "This decorator turns a norm function into a normed tuple class."
+
     class Ans(tuple):
-        def __new__(cls: type, /, *args: Any, **kwargs: Any):
+        "This class will be returned. Before that the current doc string will be overwritten."
+
+        def __new__(cls: type, /, *args: Any, **kwargs: Any) -> Any:
             "This magic method returns a new instance of the class."
             data = norm(cls, *args, **kwargs)
             obj = tuple.__new__(cls, data)

@@ -24,7 +24,7 @@ keywords = []
 name = "normedtuple"
 readme = "README.rst"
 requires-python = ">=3.11"
-version = "0.0.1+local.3"
+version = "0.0.1+local.4"
 
 [project.license]
 file = "LICENSE.txt"

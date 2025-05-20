@@ -1,12 +1,12 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-    "setuptools>=61.0",
+    "setuptools>=61.0,<62",
 ]
 
 [project]
 authors = [
-    { email = "johannes-programming@mailfence.com", name = "Johannes" },
+    { email = "johannes.programming@gmail.com", name = "Johannes" },
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -18,13 +18,15 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Typing :: Typed",
 ]
-dependencies = []
+dependencies = [
+    "norming>=0.0.0.dev0",
+]
 description = "This project allows for creating normed tuple classes."
 keywords = []
 name = "normedtuple"
 readme = "README.rst"
 requires-python = ">=3.11"
-version = "1.0.2"
+version = "1.0.2+local"
 
 [project.license]
 file = "LICENSE.txt"
